@@ -44,28 +44,28 @@
 			    $strength = array('Grass', 'Ice', 'Bug', 'Steel');
 			    break;
 			  case 'Water':
-			    $strength = array();
+			    $strength = array('Fire', 'Ground', 'Rock');
 			    break;
 			  case 'Grass':
-			    $strength = array();
+			    $strength = array('Water', 'Ground', 'Rock');
 			    break;
 			  case 'Electric':
-			    $strength = array();
+			    $strength = array('Water', 'Flying');
 			    break;
 			  case 'Psychic':
-			    $strength = array();
+			    $strength = array('Fighting', 'Poison');
 			    break;
 			  case 'Ice':
-			    $strength = array();
+			    $strength = array('Grass', 'Ground', 'Flying', 'Dragon');
 			    break;
 			  case 'Dragon':
-			    $strength = array();
+			    $strength = array('Dragon');
 			    break;
 			  case 'Dark':
-			    $strength = array();
+			    $strength = array('Psychic', 'Ghost');
 			    break;
 			  case 'Fairy':
-			    $strength = array();
+			    $strength = array('Fighting', 'Dragon', 'Dark');
 			    break;
 			  
 			  default:
@@ -80,7 +80,7 @@
 			  case 'Normal':
 			    
 			    break;
-			  case 'Fight':
+			  case 'Fighting':
 			    
 			    break;
 			  case 'Flying':
@@ -144,7 +144,7 @@
 			  case 'Normal':
 			    
 			    break;
-			  case 'Fight':
+			  case 'Fighting':
 			    
 			    break;
 			  case 'Flying':
