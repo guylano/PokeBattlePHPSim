@@ -7,6 +7,9 @@ class Attack{
 	    	$this->energytype = $attack['energytype'];
 	    	$this->power = $attack['power'];
 	    	$this->getEfects($attack['energytype']);
+	    	if(array_key_exists('SpecialEffect', $attack)){
+	    		$this->SpecialEffect = $attack['SpecialEffect'];
+	    	}
 	}
 
 	public function getEfects($type){
