@@ -1,5 +1,8 @@
 <?php
+
 	require 'resources/pokemon.php';
+	
+	
 	$types[] = "Electric";
 
 	$attacks[0]['name'] = 'Thunder';
@@ -17,8 +20,13 @@
 	$pikachu->giveAttack($attack);
 	print_r($pikachu);
 	print('<br>');
+	
 
-	$types = array("Fire", "Flying");
+	//$effect = new effectiveness('Flying');
+	    
+
+	    
+	/*$types = array("Fire", "Flying");
 
 	$attacks[0]['name'] = 'Fire Fang';
 	$attacks[0]['energytype'] = 'Fire';
@@ -33,5 +41,5 @@
 	$attack['energytype'] = 'Flying';
 	$attack['power'] = 150;
 	$Charizard->giveAttack($attack);
-	print_r($Charizard);
+	print_r($Charizard);*/
 ?>

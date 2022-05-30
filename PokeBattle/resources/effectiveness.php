@@ -1,21 +1,20 @@
 <?php
+
 	class effectiveness{
 		public function __construct($type){
+			//word gedaan vanuit attacks
 
 	    	$this->strength = $this->getStrength($type);
 	    	$this->weakness = $this->getWeakness($type);
 	    	$this->resistance = $this->getResistance($type);
 	    }
 
-
-
-
 	    public function getStrength($type){
 	    	$strength = array();
-	    	print($type);
-	    	switch ($type) {
+	    	
+    		switch ($type) {
 			  case 'Normal':
-			    
+			    $strength = array();
 			    break;
 			  case 'Fighting':
 			    $strength = array('Normal', 'Ice', 'Rock', 'Dark', 'Steel');
@@ -72,12 +71,13 @@
 			  default:
 			    $strength = array();
 			}
-	    	return $strength;
-	    }
-
+		    return $strength;
+	   	}
+	    	
 	    public function getWeakness($type){
 	    	$weakness = array();
-	    	switch ($type) {
+	    	
+    		switch ($type) {
 			  case 'Normal':
 			    $weakness = array('Rock', 'Steel');
 			    break;
@@ -141,7 +141,7 @@
 
 	    public function getResistance($type){
 	    	$resistance = array();
-	    	switch ($type) {
+    		switch ($type) {
 			  case 'Normal':
 			    $resistance = array('Ghost');
 			    break;
@@ -203,13 +203,5 @@
 	    	return $resistance;
 	    }
 
-
-
 	}
-
-
-
-
-
-
 ?>
