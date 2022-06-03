@@ -51,6 +51,12 @@
 
 	    	$enemy->current_health = $enemy->current_health - $damage;
 	    	print('<br><br><br>'.$this->name.' used '.$attack->name.' and did '.$damage.' damage.<br><br><br>');
+	    	if($damage < $attack->power){
+	    		print('<br><br><br>It was not very effective<br><br><br>');
+	    	}
+	    	if($damage > $attack->power){
+	    		print('<br><br><br>It was very effective<br><br><br>');
+	    	}
 	    	if($enemy->current_health <= 0){
 	    		$enemy->current_health = 0;
 	    		$enemy->status = 'dead';

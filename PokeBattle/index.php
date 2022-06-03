@@ -1,66 +1,41 @@
-<?php
 
-	require 'resources/pokemon.php';
-	
-	
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemon</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <?php require 'createPokemon.php'; ?>
+    <?php 
 
+	    if (isset($_GET['name'])) {
+	    	if($_GET['name']=='attack0'){
+	    		$pikachu->attack($charizard, $pikachu->attack[0]);
+	    	}
+	    	if($_GET['name']=='attack1'){
+	    		$pikachu->attack($charizard, $pikachu->attack[1]);
+	    	}
+	    	if($_GET['name']=='attack2'){
+	    		$pikachu->attack($charizard, $pikachu->attack[2]);
+	    	}
+	    	if($_GET['name']=='attack3'){
+	    		$pikachu->attack($charizard, $pikachu->attack[3]);
+	    	}
+	    	
+		} 	
+	?>
+</head>
+<body>
+    <p>
+        <?php 
+        	$index=0;
+        	foreach($pikachu->attack as $attack){
+        		print('<a class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out" href="index.php?name=attack'.$index.'">'.$attack->name.'</a>'); 
+        		$index=$index+1;
+        	}
+        ?>
+    </p>
+</body>
+</html>
 
-	function createPikachu(){
-
-
-		$types[] = "Electric";
-
-		$attacks[0]['name'] = 'Thunder';
-		$attacks[0]['energytype'] = 'Electric';
-		$attacks[0]['power'] = '70';
-		$pikachu = new Pokemon('Pikachu', $types, 200, 200, $attacks);
-		
-		$attack['name'] = 'Quick attack';
-		$attack['energytype'] = 'Normal';
-		$attack['power'] = 50;
-		$pikachu->giveAttack($attack);
-		$attack['name'] = 'Electro Ball';
-		$attack['energytype'] = 'Electric';
-		$attack['power'] = 80;
-		$pikachu->giveAttack($attack);
-		$attack['name'] = 'Thunder Wave';
-		$attack['energytype'] = 'Electric';
-		$attack['power'] = 0;
-		$attack['SpecialEffect'] = 'Paralyzed';
-		$pikachu->giveAttack($attack);
-		return $pikachu;
-	}
-
-
-	function createCharizard(){
-		$types = array("Fire", "Flying");
-		$attacks[0]['name'] = 'Fire Fang';
-		$attacks[0]['energytype'] = 'Fire';
-		$attacks[0]['power'] = '70';
-		$Charizard = new Pokemon('Charizard', $types, 500, 500, $attacks);
-		
-		$attack['name'] = 'Flamethrower';
-		$attack['energytype'] = 'Fire';
-		$attack['power'] = 100;
-		$Charizard->giveAttack($attack);
-		$attack['name'] = 'Brave Bird';
-		$attack['energytype'] = 'Flying';
-		$attack['power'] = 150;
-		$Charizard->giveAttack($attack);
-		return $Charizard;
-	}
-
-
-
-	$pikachu = createPikachu(); 
-	print_r($pikachu);
-	    
-	print('<br><br><br>');
-
-	$charizard = createCharizard();
-	print_r($charizard);
-
-	$pikachu->attack($charizard, $pikachu->attack[2]);
-
-	print_r($charizard);
-?>
