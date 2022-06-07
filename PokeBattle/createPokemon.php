@@ -10,9 +10,10 @@
 
 		$types[] = "Electric";
 
-		$attacks[0]['name'] = 'Thunder';
-		$attacks[0]['energytype'] = 'Electric';
-		$attacks[0]['power'] = '70';
+		$attacks[0]['name'] = 'Hypnosis';
+		$attacks[0]['energytype'] = 'Psychic';
+		$attacks[0]['power'] = '0';
+		$attacks[0]['SpecialEffect'] = 'Asleep';
 		$pikachu = new Pokemon('Pikachu', $types, 200, 200, $attacks);
 		
 		$attack['name'] = 'Quick attack';
@@ -60,7 +61,7 @@
 	$charizard = createCharizard();
 	print_r($charizard);
 
-	$pikachu->attack($charizard, $pikachu->attack[2]);
+	
 
 	print_r($charizard);
 
