@@ -9,6 +9,7 @@
 		private $name;
 		private $team;
 		private $activity;
+		private $level;
 		private $status;
 		private $status_counter;
 		private $max_health;
@@ -53,6 +54,9 @@
 	    public function setSpeed($speed) {
 	    	$this->speed = $speed;
 	    }
+	    public function setLevel($level) {
+	    	$this->level = $level;
+	    }
 
 	    public function getName() {
 	    	return $this->name;
@@ -83,6 +87,9 @@
 	    }
 	    public function getSpeed() {
 	    	return $this->speed;
+	    }
+	    public function getLevel() {
+	    	return $this->level;
 	    }
 	    
 	    

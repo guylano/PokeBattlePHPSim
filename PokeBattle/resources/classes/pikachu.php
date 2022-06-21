@@ -15,15 +15,15 @@
 		private $speed;
 
 		public function __construct($team, $level, $attacks = array()){
-			$this->name = 'Pikachu';
-			$this->team = $team;
-			$this->energytype[] = 'Electric';
-			$this->level = $level;
-			$this->max_health = 150+($level*7);
-			$this->speed = 100+($level*7);
-			$this->current_health = $this->max_health;
-			$this->status = 'alive';
-			$this->activity = 'field';
+			$this->setName('Pikachu');
+			$this->setTeam($team);
+			$this->setEnergyType(array('Electric'));
+			$this->setLevel($level);
+			$this->setMaxHealth(150+($level*7));
+			$this->setSpeed(100+($level*7));
+			$this->setCurrentHealth($this->max_health);
+			$this->setStatus('alive');
+			$this->setActivity('field');
 			if(!empty($attacks)){
 	    		foreach ($attacks as $attack) {
 	    			$this->setAttack($attack);
@@ -35,6 +35,9 @@
 	    }
 	    public function setTeam($team) {
 	    	$this->team = $team;
+	    }
+	    public function setLevel($level) {
+	    	$this->level = $level;
 	    }
 	    public function setActivity($activity) {
 	    	$this->activity = $activity;
@@ -65,6 +68,9 @@
 
 	    public function getName() {
 	    	return $this->name;
+	    }
+	    public function getLevel() {
+	    	return $this->level;
 	    }
 	    public function getTeam() {
 	    	return $this->team;

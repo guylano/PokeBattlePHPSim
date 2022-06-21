@@ -23,11 +23,11 @@
 			$this->setTeam($team);
 			$this->setEnergyType(array('Fire', 'Flying'));
 			$this->setLevel($level);
-			$this->max_health = 150+($level*5);
-			$this->speed = 100+($level*9);
-			$this->current_health = $this->max_health;
-			$this->status = 'alive';
-			$this->activity = 'field';
+			$this->setMaxHealth(150+($level*5));
+			$this->setSpeed(100+($this->getLevel()*9));
+			$this->setCurrentHealth($this->max_health);
+			$this->setStatus('alive');
+			$this->setActivity('field');
 			if(!empty($attacks)){
 	    		foreach ($attacks as $attack) {
 	    			$this->setAttack($attack);
@@ -74,6 +74,9 @@
 
 	    public function getName() {
 	    	return $this->name;
+	    }
+	    public function getLevel() {
+	    	return $this->level;
 	    }
 	    public function getTeam() {
 	    	return $this->team;

@@ -30,7 +30,7 @@
 			<div>
 				<div class="flex justify-end">
 				  <div class="block p-6 rounded-lg shadow-lg bg-red-400 max-w-sm w-1/5">
-				    <h5 class="text-white text-xl leading-tight font-medium mb-2"><?php print($charizard->getName()); ?>
+				    <h5 class="text-white text-xl leading-tight font-medium mb-2"><?php print($charizard->getName().' lvl '.$charizard->getLevel()); ?>
 				    	<?php 
 				    		if($charizard->getStatus()!='alive'){
 				    			if($charizard->getStatus()=='Asleep'){
@@ -69,7 +69,7 @@
 
 				<div class="flex ">
 				  <div class="block p-6 rounded-lg shadow-lg bg-blue-400 max-w-sm w-1/5">
-				    <h5 class="text-white text-xl leading-tight font-medium mb-2"><?php print($pikachu->getName()); ?>
+				    <h5 class="text-white text-xl leading-tight font-medium mb-2"><?php print($pikachu->getName().' lvl '.$charizard->getLevel()); ?>
 				    	<?php 
 				    		if($pikachu->getStatus()!='alive'){
 				    			if($pikachu->getStatus()=='Asleep'){
@@ -110,7 +110,7 @@
 				 		} 
 				 	?>
 				</div>
-				<div class="flex" style="width: 150px; padding-top: 100px;">
+				<div class="flex" style="width: 150px; padding-top: 100px; margin-left: 300px;">
 					<?php 
 						if($pikachu->getCurrentHealth()!= 0){
 					?>
