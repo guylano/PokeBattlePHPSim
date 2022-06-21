@@ -1,15 +1,7 @@
 <?php
 
-	class effectiveness{
-		public function __construct($type){
-			//word gedaan vanuit attacks
-
-	    	$this->strength = $this->getStrength($type);
-	    	$this->weakness = $this->getWeakness($type);
-	    	$this->resistance = $this->getResistance($type);
-	    }
-
-	    public function getStrength($type){
+	class Effectiveness{
+	    public function setStrength($type){
 	    	$strength = array();
 	    	
     		switch ($type) {
@@ -74,7 +66,7 @@
 		    return $strength;
 	   	}
 	    	
-	    public function getWeakness($type){
+	    public function setWeakness($type){
 	    	$weakness = array();
 	    	
     		switch ($type) {
@@ -139,7 +131,7 @@
 	    	return $weakness;
 	    }
 
-	    public function getResistance($type){
+	    public function setResistance($type){
 	    	$resistance = array();
     		switch ($type) {
 			  case 'Normal':
