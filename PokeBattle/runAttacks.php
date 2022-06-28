@@ -1,8 +1,8 @@
 <?php 
 
-
-				if (isset($_GET['name'])) {
-			    	$attacks = explode(';', $_GET['name']);
+				
+				if (isset($_POST['name'])) {
+			    	$attacks = explode(';', $_POST['name']);
 			    	foreach($attacks as $a){
 			    		if($a != ''){
 			    			$attack[]=$a;
@@ -16,6 +16,7 @@
 			    		
 			    		if($index == count($attack)){
 			    			$latest = true;
+
 			    		}else{
 			    			$latest = false;
 			    		}
@@ -52,6 +53,9 @@
 				    	$counterattack=$counterattack+1;
 				    	if($counterattack==count($charizardAttacks)){
 				    		$counterattack=0;
+				    	}
+				    	if($latest == true){
+				    		//print('population is currently '.getPopulation().' pokemon big and their avarage health is '.getPopulationHealth());
 				    	}
 			    	}
 			    	

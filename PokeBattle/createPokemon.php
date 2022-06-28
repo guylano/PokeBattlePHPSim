@@ -5,20 +5,18 @@
 	require 'resources/classes/charizard.php';
 	
 	
-
-
+	$population = array();
+	global $population;
 	function createPikachu(){
-
+		global $population;
 		$attacks[0]['name'] = 'Hypnosis';
 		$attacks[0]['energytype'] = 'Psychic';
 		$attacks[0]['power'] = '0';
 		$attacks[0]['SpecialEffect'] = 'Asleep';
-		$attacks[1]['name'] = 'Toxic';
-		$attacks[1]['energytype'] = 'Poison';
-		$attacks[1]['power'] = 0;
-		$attacks[1]['SpecialEffect'] = 'Poisoned';
+		$attacks[1]['name'] = 'Ticle';
+		$attacks[1]['energytype'] = 'Normal';
+		$attacks[1]['power'] = 1;
 		$pikachu = new pikachu('Allied' , 34, $attacks);
-		
 	
 
 		$attack['name'] = 'Electro Ball';
@@ -30,15 +28,17 @@
 		$attack['power'] = 0;
 		$attack['SpecialEffect'] = 'Paralyzed';
 		$pikachu->setAttack($attack);
+		$population[] = $pikachu;
 		return $pikachu;
 	}
 
 
 	function createCharizard(){
-		
+		global $population;
 		$attacks[0]['name'] = 'Fire Fang';
 		$attacks[0]['energytype'] = 'Fire';
 		$attacks[0]['power'] = '70';
+		$attack['SpecialEffect'] = 'Burned';
 		$Charizard = new charizard('Enemy', 34, $attacks);
 		
 		$attack['name'] = 'Flamethrower';
@@ -49,6 +49,7 @@
 		$attack['energytype'] = 'Flying';
 		$attack['power'] = 150;
 		$Charizard->setAttack($attack);
+		$population[] = $Charizard;
 		return $Charizard;
 	}
 
@@ -62,10 +63,11 @@
 	$charizard = createCharizard();
 	//print_r($charizard);
 
-	$population = array($pikachu, $charizard);
+	
 
 	
-	function getPopulation($population){
+	function getPopulation(){
+		global $population;
 		foreach($population as $p){
 			if($p->getStatus() != 'dead'){
 				$livingPopulation[] = $p;
@@ -75,14 +77,13 @@
 	}
 
 
-	function getPopulationHealth($population){
+	function getPopulationHealth(){
+		global $population;
 		$allhp = 0;
 		foreach($population as $p){
 			$allhp = $allhp + $p->getCurrentHealth();
 		}
 		$avgHealth=$allhp/getPopulation($population);
-
-
 
 		return $avgHealth;
 	}

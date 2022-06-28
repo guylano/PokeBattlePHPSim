@@ -94,6 +94,7 @@
 	    
 	    
 
+
 	    
 
 
@@ -139,48 +140,48 @@
 	    	}
 
 	    	//sp effect check
-	    	
+	    	$noDamage=false;
+	    	$lowerDamage=false;
+	    	$slightDamage=false;
+
 	    	switch ($this->getStatus()) {
 	    		case 'Paralyzed':
 
 	    			if($this->getStatusCounter()==2){
 		    			$damage = 0;
-		    			$effect[] = 'no damage';
+		    			$noDamage = true;
 		    			$this->setStatusCounter(0);
-	    			}else{
-	    				$effect[] = 'none';
 	    			}
 	    			break;
 
 	    		case 'Frozen':
 	    			$damage = 0;
-	    			$effect[] = 'no damage';
+	    			$noDamage = true;
 	    			break;
 
 	    		case 'dead':
 	    			$damage = 0;
-	    			$effect[] = 'no damage';
+	    			$noDamage = true;
 	    			$latest=false;
 	    			break;
 
 	    		case 'Burned':
-	    			$damage = 0;
-	    			$effect[] = 'slight damage';
+	    			
+	    			$slightDamage = true;
 	    			break;
 
 	    		case 'Poisoned':
 	    			$damage = $damage-($damage/10);
-	    			$effect[] = 'slight damage';
-	    			$effect[] = 'damage reduction';
-	    			break;
+	    			$slightDamage = true;
+		    		break;
 
 	    		case 'Asleep':
 	    			$damage = 0;
-	    			$effect[] = 'no damage';
+	    			$noDamage = true;
 	    			break;
 	    			
 	    		default:
-	    			$effect[] = 'none';
+	    			
 	    			break;
 	    		
 	    		
@@ -188,20 +189,20 @@
 
 
 	    	$enemy->setCurrentHealth($enemy->getCurrentHealth() - $damage);
-	    	if($latest == true){
+	    	if($latest == true && $noDamage == false){
 	    		print(''.$this->getName().' used '.$attack->getName().' and did '.$damage.' damage.<br><br>');
 	    	}
 	    	if($enemy->getCurrentHealth() <= 0){
 	    		$enemy->setCurrentHealth(0);
 	    	}
-	    	if($latest == true){
+	    	if($latest == true && $noDamage == false){
 	    		print(''.$enemy->getName().' has '.$enemy->getCurrentHealth().' health left<br><br>');
 
 	    	}
 	    	if($latest == true){
 		    	if($resist==true){
 		    		print('It did not effect the '.$enemy->getName().'<br><br>');
-		    	}elseif(in_array('no damage', $effect)){
+		    	}elseif($noDamage==true){
 		    		print($this->getName().' was '.$this->getStatus().'<br><br>');
 		    	}elseif($effectiveness == 'weak'){
 		    		print('It was not very effective<br><br>');
@@ -218,16 +219,18 @@
 	    		}
 	    	}
 	    	if($enemy->getStatus() != 'dead' && $attack->getSpecialEffect() != null){
-	    		if($enemy->getStatus()==$attack->getSpecialEffect()){
-	    			if($latest == true){
-	    				print(''.$enemy->getName().' was already '.$attack->getSpecialEffect().'😴😴<br><br>');
-	    			}
-	    		}else{
-		    		$enemy->setStatus($attack->getSpecialEffect());
-		    		if($latest == true){
-		    			print(''.$enemy->getName().' is now '.$attack->getSpecialEffect().'<br><br>');
+	    		if($noDamage==false){
+		    		if($enemy->getStatus()==$attack->getSpecialEffect()){
+		    			if($latest == true){
+		    				print(''.$enemy->getName().' was already '.$attack->getSpecialEffect().'😴😴<br><br>');
+		    			}
+		    		}else{
+			    		$enemy->setStatus($attack->getSpecialEffect());
+			    		if($latest == true){
+			    			print(''.$enemy->getName().' is now '.$attack->getSpecialEffect().'<br><br>');
+			    		}
+			    		$enemy->setStatusCounter(0);
 		    		}
-		    		$enemy->setStatusCounter(0);
 	    		}
 	    	}
 

@@ -26,7 +26,9 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="relative md:fixed w-full  min-h-screen inset-0">
+			
 			<div>
 				<div class="flex justify-end">
 				  <div class="block p-6 rounded-lg shadow-lg bg-red-400 max-w-sm w-1/5">
@@ -53,7 +55,7 @@
 				    </h5>
 				    
 
-				    
+				   
 
 				    <div class="w-4/5 bg-gray-200 rounded-full text-black">
 		  				<div class="bg-blue-600 text-xs font-medium text-black text-center p-0.5 leading-none rounded-full" <?php print('style="width: '.$enemy_healthLeft.'%"')?>>
@@ -122,26 +124,40 @@
 			</div>
 			<div>
 			    <p>
-			    	<div>
-				        <?php 
-				        	$index=0;
-				        	$attacks = $pikachu->getAttacks();
-				        	if (isset($_GET['name'])){
-				        		foreach($attacks as $attack){
-					        		print('<a class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out" href="index.php?name='.$_GET['name'].'attack'.$index.';">'.$attack->getName().'</a>'); 
-					        		$index=$index+1;
-				        		}
-				        	}else{
-					        	foreach($attacks as $attack){
-					        		print('<a class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out" href="index.php?name=;attack'.$index.';">'.$attack->getName().'</a>'); 
-					        		$index=$index+1;
-				        		}
-				        	}
-				        ?>
+			    	<div class="p-6 rounded-lg shadow-lg bg-gray-400" style="width: 240px; margin-top:22px;">
+			    		<div class="fixed" style="margin-left: 215px; margin-top: 98px;">
+					    	<?php
+				        		print('<br><br><a class="inline-block px-6 py-2.5 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-600 hover:shadow-lg focus:bg-red-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out" href="index.php">Reset</a>'); 
+				        	?>
+				    	</div>
+			    		<div class="bg-white h-full">
+					        <?php 
+					        	$index=0;
+					        	$attacks = $pikachu->getAttacks();
+					        	if (isset($_POST['name'])){
+					        		foreach($attacks as $attack){
+					        			print('<form action="index.php" class="m-1 p-1 inline" method="post" >
+	                                			<input type="hidden" name="name" value="'.$_POST['name'].'attack'.$index.';">
+	                                			<input type="submit" class="inline-block px-6 py-2 my-1 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out" style="width:175px;" value="'.$attack->getName().'">
+	                                			</form><br>');
+						        		//print('<a class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out" href="index.php?name='.$_GET['name'].'attack'.$index.';">'.$attack->getName().'</a>'); 
+						        		$index=$index+1;
+					        		}
+					        	}else{
+						        	foreach($attacks as $attack){
+						        		print('<form action="index.php" class="m-1 p-1 inline" method="post" >
+	                                			<input type="hidden" name="name" value=";attack'.$index.';">
+	                                			<input type="submit" class="inline-block px-6 py-2 my-1 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out" style="width:175px;" value="'.$attack->getName().'">
+	                                			</form><br>');
+
+						        		//print('<a class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out" href="index.php?name=;attack'.$index.';">'.$attack->getName().'</a>'); 
+						        		$index=$index+1;
+					        		}
+					        	}
+					        ?>	
+				        </div>
 			        </div>
-		        	<?php
-			        	print('<br><br><a class="inline-block px-6 py-2.5 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-600 hover:shadow-lg focus:bg-red-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out" href="index.php">Reset</a>'); 
-			        ?>
+		        
 			    </p>
 			</div>
 		</div>
@@ -150,6 +166,6 @@
 </html>
 
 <?php 
-	//print(getPopulation($population).'<br>');
-	//print(getPopulationHealth($population));
+	//print(getPopulation().'<br>');
+	//print(getPopulationHealth());
 ?>
