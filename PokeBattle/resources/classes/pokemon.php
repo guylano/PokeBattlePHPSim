@@ -1,10 +1,10 @@
 <?php
-	
+	namespace classes;
 	require_once 'attacks.php';
 	
 	// maak ook subclases aan voor pikachu en charmander
 
-	class Pokemon{ 
+	abstract class Pokemon{ 
 		// visibilty modifiers
 		private $name;
 		private $team;
@@ -23,74 +23,7 @@
 
 	    // Getters and setters
 	    
-		public function setName($name) {
-	    	$this->name = $name;
-	    }
-	    public function setTeam($team) {
-	    	$this->team = $team;
-	    }
-	    public function setActivity($activity) {
-	    	$this->activity = $activity;
-	    }
-	    public function setStatus($status) {
-	    	$this->status = $status;
-	    }
-	    public function setStatusCounter($status_counter) {
-	    	$this->status_counter = $status_counter;
-	    }
-	    
-	    public function setMaxHealth($max_health) {
-	    	$this->max_health = $max_health;
-	    }
-	    public function setCurrentHealth($current_health) {
-	    	$this->current_health = $current_health;
-	    }
-	    public function setAttack($attack= array()){
-	    	$this->attack[] = new Attack($attack);	
-	    }
-	    public function setEnergyType($energytype= array()){
-	    	$this->energytype = $energytype;	
-	    }
-	    public function setSpeed($speed) {
-	    	$this->speed = $speed;
-	    }
-	    public function setLevel($level) {
-	    	$this->level = $level;
-	    }
-
-	    public function getName() {
-	    	return $this->name;
-	    }
-	    public function getTeam() {
-	    	return $this->team;
-	    }
-	    public function getActivity() {
-	    	return $this->activity;
-	    }
-	    public function getStatus() {
-	    	return $this->status;
-	    }
-	    public function getStatusCounter() {
-	    	return $this->status_counter;
-	    }
-	    public function getMaxHealth() {
-	    	return $this->max_health;
-	    }
-	    public function getCurrentHealth() {
-	    	return $this->current_health;
-	    }
-	    public function getAttacks() {
-	    	return $this->attack;
-	    }
-	    public function getEnergyType() {
-	    	return $this->energytype;
-	    }
-	    public function getSpeed() {
-	    	return $this->speed;
-	    }
-	    public function getLevel() {
-	    	return $this->level;
-	    }
+		
 	    
 	    
 

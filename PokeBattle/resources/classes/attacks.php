@@ -1,4 +1,5 @@
 <?php 
+namespace classes;
 require_once 'effectiveness.php';
 
 class Attack extends Effectiveness{

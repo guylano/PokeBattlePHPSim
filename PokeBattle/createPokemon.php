@@ -1,9 +1,15 @@
 <?php
 
-	require 'resources/classes/pokemon.php';
-	require 'resources/classes/pikachu.php';
-	require 'resources/classes/charizard.php';
+	namespace classes;
+
+
+
+	spl_autoload_register(function ($class_name) {
+		require 'resources/' . $class_name . '.php';
+		
+	});
 	
+
 	
 	$population = array();
 	global $population;
@@ -39,7 +45,7 @@
 		$attacks[0]['energytype'] = 'Fire';
 		$attacks[0]['power'] = '70';
 		$attack['SpecialEffect'] = 'Burned';
-		$Charizard = new charizard('Enemy', 34, $attacks);
+		$Charizard = new Charizard('Enemy', 34, $attacks);
 		
 		$attack['name'] = 'Flamethrower';
 		$attack['energytype'] = 'Fire';

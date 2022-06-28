@@ -20,7 +20,7 @@
 			    		}else{
 			    			$latest = false;
 			    		}
-			    		if($pikachu->getSpeed()>$charizard->getSpeed()||$charizard->getStatus()=='Paralyzed'){
+			    		if($pikachu->getSpeed()>=$charizard->getSpeed()||$charizard->getStatus()=='Paralyzed'){
 					    	if($a=='attack0'){
 					    		$pikachu->attack($charizard, $pikachuAttacks[0], $latest);
 					    	}
@@ -34,7 +34,7 @@
 					    		$pikachu->attack($charizard, $pikachuAttacks[3], $latest);
 					    	}
 					    	$charizard->attack($pikachu, $charizardAttacks[$counterattack], $latest);
-			    		}elseif($pikachu->getSpeed()<$charizard->getSpeed()||$pikachu->getStatus()=='Paralyzed'){
+			    		}elseif($pikachu->getSpeed()<=$charizard->getSpeed()||$pikachu->getStatus()=='Paralyzed'){
 			    			$charizard->attack($pikachu, $charizardAttacks[$counterattack], $latest);
 			    			if($a=='attack0'){
 					    		$pikachu->attack($charizard, $pikachuAttacks[0], $latest);
@@ -49,6 +49,7 @@
 					    		$pikachu->attack($charizard, $pikachuAttacks[3], $latest);
 					    	}
 			    		}
+			    		
 				    	$index=$index+1;
 				    	$counterattack=$counterattack+1;
 				    	if($counterattack==count($charizardAttacks)){

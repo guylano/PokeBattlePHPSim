@@ -1,5 +1,5 @@
 <?php
-
+	namespace classes;
 	class Effectiveness{
 	    public function setStrength($type){
 	    	$strength = array();

@@ -104,22 +104,11 @@
 			</div>
 			<div>
 				<div class="flex " style="width: 200px; float: right; margin-right: 200px;">
-					<?php 
-						if($charizard->getCurrentHealth()!= 0){
-					?>
-					<img src="resources/images/charizard.png" class="mr-5" style="width: 200px;">
-					<?php
-				 		} 
-				 	?>
+					<img <?php print('src="resources/images/'.strtolower($charizard->getName()).'.png"'); ?> class="mr-5" <?php if($charizard->getCurrentHealth()== 0){print('style="visibility:hidden;');} ?> style="width: 200px;">
+					
 				</div>
 				<div class="flex" style="width: 150px; padding-top: 100px; margin-left: 300px;">
-					<?php 
-						if($pikachu->getCurrentHealth()!= 0){
-					?>
-					<img src="resources/images/pikachu.png" class="ml-5" style="width: 150px;">
-					<?php
-				 		} 
-				 	?>
+					<img <?php print('src="resources/images/'.strtolower($pikachu->getName()).'.png"'); ?> class="ml-5" <?php if($pikachu->getCurrentHealth()== 0){print('style="visibility:hidden;');} ?> style="width: 150px;">
 				</div>
 			</div>
 			<div>

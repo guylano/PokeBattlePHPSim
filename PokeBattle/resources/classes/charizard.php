@@ -1,12 +1,12 @@
 <?php
-	require_once 'resources/classes/pokemon.php';
+	namespace classes;
+	require_once 'resources/classes/Pokemon.php';
+	class Charizard extends Pokemon{
 
-	class charizard extends pokemon{
 
-
-		private $name;
+		private static $name;
 		private $team;
-		private $energytype;
+		private static $energytype;
 		private $level;
 		private $max_health;
 		private $current_health;
@@ -35,7 +35,7 @@
 	    	}
 		}
 		public function setName($name) {
-	    	$this->name = $name;
+	    	self::$name = $name;
 	    }
 	    public function setLevel($level) {
 	    	$this->level = $level;
@@ -66,14 +66,14 @@
 	    	$this->attack[] = new Attack($attack);	
 	    }
 	    public function setEnergyType($energytype= array()){
-	    	$this->energytype = $energytype;	
+	    	self::$energytype = $energytype;	
 	    }
 
 
 
 
 	    public function getName() {
-	    	return $this->name;
+	    	return self::$name;
 	    }
 	    public function getLevel() {
 	    	return $this->level;
@@ -103,7 +103,7 @@
 	    	return $this->attack;
 	    }
 	    public function getEnergyType() {
-	    	return $this->energytype;
+	    	return self::$energytype;
 	    }
 	    
 	}
